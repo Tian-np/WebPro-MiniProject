@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1>เพิ่มร้านอาหาร</h1>
+    <br />
+    <!-- {% csrf_token %} -->
+    {% if msg %}
+    <p class="text-success">{{msg}}</p>
+    {% endif %}
+    <div class="form-row">
+        <div class="form-group col-6">
+            <label for="section">ชื่อร้าน:</label>
+            <input type="text" class="form-control" name="name" id="name" value="{{res.name}}" required>
+        </div>
+        <div class="form-group col-6">
+            <label for="section">เจ้าของร้าน:</label>
+            <input type="text" class="form-control" name="owner" id="owner" value="{{res.owner}}" required>
+        </div>
+        <div class="form-group col-6">
+            <label for="section">รูปภาพ:</label>
+            <input type="file" class="form-control-file" id="picture" name="picture" value="{{res.picture}}" required>
+        </div>
+        <div class="form-group col-6">
+            <label for="section">เวลาเปิด:</label>
+            <input type="time" class="form-control" name="open_time" id="open_time" value="{{res.open_time}}" required>
+        </div>
+        <div class="form-group col-6">
+            <label for="section">เวลาปิด:</label>
+            <input type="time" class="form-control" name="close_time" id="close_time" value="{{res.close_time}}"
+                required>
+        </div>
+        <div class="form-group col-6">
+            <label for="section">คณะ:</label>
+            <select class="form-control" id="faculty" name="faculty" required>
+                <option value=''>---เลือก---</option>
+                {% for i in faculty %}
+                <option value='{{i.fac_id}}'>{{i}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <button type="reset" class="btn btn-primary ml-3"'>Reset Form</button>
+    <button type="submit" class="btn btn-warning ml-3">Submit</button>
+    </form>
+</div>
+{% endblock %}

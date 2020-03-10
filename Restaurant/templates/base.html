@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Restaurant</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css'%}">
+</head>
+
+<body>
+    <nav class="navbar navbar-light" id="navbar">
+        <div class='row bg-light mb-3'>
+            <a class="navbar-brand ml-5 mt-2 " href="{% url 'index' %}">KMITL Restaurants </a>
+            {% if user.is_anonymous %}
+            <a class="nav-link mt-2 btn-light" href="{% url 'login' %}">login</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <a class="nav-link mt-2 btn-light" href="{% url 'add' %}">management</a>
+            <a class="nav-link mt-2 btn-light" href="{% url 'login' %}">logout</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container-fluid">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <!-- <footer class="footer">
+        <div class="container">
+            <span class="text-muted">
+                {% block search %}
+                {% endblock %}
+            </span>
+        </div>
+    </footer> -->
+</body>
+
+</html>
