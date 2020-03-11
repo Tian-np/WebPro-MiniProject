@@ -1,10 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import HttpResponseRedirect, redirect, render
 from pkg_resources import require
 
-from homepage.models import Faculty, Restaurant, RestaurantFood, Food
+from homepage.models import Faculty, Food, Restaurant, RestaurantFood
 
 # Create your views here.
 
@@ -50,10 +50,10 @@ def login(request):
     return render(request, template_name='login.html', context=context)
 
 
+@login_required
 def logout(request):
-    # logout(request)
-    return redirect('login')
-    # return render(request, template_name='login.html')
+    django_logout(request)
+    return HttpResponseRedirect('/login')
 
 
 def add(request):
