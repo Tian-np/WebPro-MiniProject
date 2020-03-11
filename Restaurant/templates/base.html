@@ -14,12 +14,12 @@
     <nav class="navbar navbar-light" id="navbar">
         <div class='row bg-light mb-3'>
             <a class="navbar-brand ml-5 mt-2 " href="{% url 'index' %}">KMITL Restaurants </a>
-            {% if user.is_anonymous %}
+            {% if user.id == None %}
             <a class="nav-link mt-2 btn-light" href="{% url 'login' %}">login</a>
             {% endif %}
             {% if user.is_authenticated %}
             <a class="nav-link mt-2 btn-light" href="{% url 'add' %}">management</a>
-            <a class="nav-link mt-2 btn-light" href="{% url 'login' %}">logout</a>
+            <a class="nav-link mt-2 btn-light" href="{% url 'logout' %}">logout</a>
             {% endif %}
         </div>
     </nav>
@@ -27,14 +27,6 @@
         {% block content %}
         {% endblock %}
     </div>
-    <!-- <footer class="footer">
-        <div class="container">
-            <span class="text-muted">
-                {% block search %}
-                {% endblock %}
-            </span>
-        </div>
-    </footer> -->
 </body>
 
 </html>

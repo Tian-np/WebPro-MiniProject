@@ -1,8 +1,10 @@
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from homepage.models import Faculty, Restaurant
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from pkg_resources import require
+
+from homepage.models import Faculty, Restaurant, RestaurantFood, Food
 
 # Create your views here.
 
@@ -49,9 +51,22 @@ def login(request):
 
 
 def logout(request):
-    logout(request)
+    # logout(request)
     return redirect('login')
+    # return render(request, template_name='login.html')
 
 
 def add(request):
     return render(request, template_name='add.html')
+
+
+# def resf_list(request, res_id):
+
+#     res = Restaurant.objects.get(pk=res_id)
+#     list_f = Restaurant_food.objects.filter(
+#         restaurant=res_id
+#     )
+#     return render(request, 'datails.html', context={
+#         'res_f': res,
+#         'list_f': list_f
+#     })

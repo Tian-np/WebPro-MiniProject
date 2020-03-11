@@ -26,6 +26,7 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
     path('add/', views.add, name='add'),
+    # path('list_f/<int:res_id>/', views.resf_list, name='resf_list'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
